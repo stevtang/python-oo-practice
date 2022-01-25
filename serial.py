@@ -17,3 +17,18 @@ class SerialGenerator:
     >>> serial.generate()
     100
     """
+    def __init__(self, start):
+        """Create generator with starting serial number"""
+        self.start = start
+        self.current_num = start
+        
+    def generate(self):
+        """Returns next sequential number"""
+        self.current_num += 1
+        return self.current_num - 1
+
+    def reset(self):
+        """Set serial number back to starting number"""
+        self.current_num = self.start
+
+    
