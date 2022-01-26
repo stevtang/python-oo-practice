@@ -13,21 +13,20 @@ class WordFinder:
     def __init__(self, filepath):
         """Create Word Finder by reading in words from filepath"""
 
-        self.words = self._readFile(filepath)
+        self.words = self._read_file(filepath)
         print(f"{len(self.words)} words read")
-
-    def _readFile(self, filepath):
+    
+    def _read_file(self, filepath):
         """Reads a file and returns list of the file lines"""
 
-        words = []
         file = open(filepath, "r")
-        for line in file:
-            if self._isValid(line):
-                words.append(line.strip())
+
+        words = [line.strip() for line in file if self._is_valid(line)]
+
         file.close()
         return words
 
-    def _isValid(self, line):
+    def _is_valid(self, line):
         """Determines if line should be included. Always returns True."""
 
         return True
@@ -52,7 +51,7 @@ class SpecialWordFinder(WordFinder):
 
         super().__init__(filepath)
 
-    def _isValid(self, line):
+    def _is_valid(self, line):
         """Returns False for lines that start with '#' or blank lines"""
 
         return not (line.startswith("#") or line == "\n")

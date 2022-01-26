@@ -22,6 +22,10 @@ class SerialGenerator:
         self.start = start
         self.next_num = start
     
+    def __repr__(self):
+        return f"<SerialGenerator start={self.start} next={self.next_num}>"
+        
+    
     def generate(self):
         """Returns next sequential number"""
         self.next_num += 1
